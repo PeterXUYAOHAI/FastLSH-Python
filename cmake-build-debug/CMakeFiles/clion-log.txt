@@ -1,0 +1,50 @@
+/home/peter/clion-2016.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/peter/FYP/FastLSH-swig
+-- The C compiler identification is GNU 5.4.0
+-- The CXX compiler identification is GNU 5.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PythonInterp: /usr/bin/python (found version "2.7.12") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Looking for pthread_create
+-- Looking for pthread_create - not found
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Try OpenMP C flag = [-fopenmp]
+-- Performing Test OpenMP_FLAG_DETECTED
+-- Performing Test OpenMP_FLAG_DETECTED - Success
+-- Try OpenMP CXX flag = [-fopenmp]
+-- Performing Test OpenMP_FLAG_DETECTED
+-- Performing Test OpenMP_FLAG_DETECTED - Success
+-- Found OpenMP: -fopenmp  
+-- Found JNI: /usr/lib/jvm/default-java/jre/lib/amd64/libjawt.so  
+-- JNI_INCLUDE_DIRS=/usr/lib/jvm/java-8-openjdk-amd64/include;/usr/lib/jvm/java-8-openjdk-amd64/include/linux;/usr/lib/jvm/java-8-openjdk-amd64/include
+-- JNI_LIBRARIES=/usr/lib/jvm/default-java/jre/lib/amd64/libjawt.so;/usr/lib/jvm/default-java/jre/lib/amd64/server/libjvm.so
+-- Found HDFS/usr/local/hadoop/include
+-- Found MPI_C: /usr/lib/openmpi/lib/libmpi.so  
+-- Found MPI_CXX: /usr/lib/openmpi/lib/libmpi_cxx.so;/usr/lib/openmpi/lib/libmpi.so  
+-- Boost version: 1.58.0
+-- Found the following Boost libraries:
+--   system
+--   filesystem
+--   mpi
+--   serialization
+/usr/bin/mpiexec
+README.mdtests/driver.cppinclude/LSH.hsrc/LSH.cpptests/unitTests/HdfsTest.cpptests/unitTests/MetaTest.cpptests/unitTests/MTTests/StdthreadTest.cpptests/unitTests/MTTests/PthreadTest.cppsrc/InMemoryStore/memcached.cpptests/unitTests/MTTests/OpenMPTest.cpptests/unitTests/inMemoryStoreTest/MemcachedTest.cppsrc/InMemoryStore/redis.cpptests/unitTests/inMemoryStoreTest/RedisTest.cppsrc/Normalizer.cpptests/unitTests/SingleThreadTest.cppinclude/otherClasses/FileLoader.hinclude/otherClasses/Computer.htests/unitTests/ComputerTest.cppinclude/otherClasses/ParameterHolder.hinclude/otherClasses/Generator.hsrc/Generator.cppsrc/Computer/PthreadComputer.cpptests/unitTests/GeneratorTest.cppsrc/Computer/SingleThreadComputer.cppsrc/Computer/OpenMPComputer.cppsrc/Computer/StdThreadComputer.cppsrc/FileLoader/LfsLoader.cppsrc/FileLoader/FileLoader.cppsrc/FileLoader/HdfsLoader.cpp
+/usr/lib/openmpi/lib/libmpi_cxx.so/usr/lib/openmpi/lib/libmpi.so
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/peter/FYP/FastLSH-swig/cmake-build-debug

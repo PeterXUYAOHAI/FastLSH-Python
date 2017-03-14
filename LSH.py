@@ -174,6 +174,9 @@ class LSH(_object):
     def loadSetN(self, filePath, fileSize):
         return _LSH.LSH_loadSetN(self, filePath, fileSize)
 
+    def saveCandidateSet(self, filePath):
+        return _LSH.LSH_saveCandidateSet(self, filePath)
+
     def setUseHdfs(self, useHdfs):
         return _LSH.LSH_setUseHdfs(self, useHdfs)
 
@@ -201,8 +204,29 @@ class LSH(_object):
     def setComputeMode(self, computeMode):
         return _LSH.LSH_setComputeMode(self, computeMode)
 
+    def reportStatus(self):
+        return _LSH.LSH_reportStatus(self)
+
     def clear(self):
         return _LSH.LSH_clear(self)
+
+    def getSetN(self):
+        return _LSH.LSH_getSetN(self)
+
+    def setSetN(self, setN):
+        return _LSH.LSH_setSetN(self, setN)
+
+    def getSetQ(self):
+        return _LSH.LSH_getSetQ(self)
+
+    def setSetQ(self, setQ):
+        return _LSH.LSH_setSetQ(self, setQ)
+
+    def getHashMatrixN(self):
+        return _LSH.LSH_getHashMatrixN(self)
+
+    def getHashMatrixQ(self):
+        return _LSH.LSH_getHashMatrixQ(self)
     __swig_destroy__ = _LSH.delete_LSH
     __del__ = lambda self: None
 LSH_swigregister = _LSH.LSH_swigregister

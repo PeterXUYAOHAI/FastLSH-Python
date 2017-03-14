@@ -30,21 +30,8 @@
 -- Performing Test OpenMP_FLAG_DETECTED
 -- Performing Test OpenMP_FLAG_DETECTED - Success
 -- Found OpenMP: -fopenmp  
--- Found JNI: /usr/lib/jvm/default-java/jre/lib/amd64/libjawt.so  
--- JNI_INCLUDE_DIRS=/usr/lib/jvm/java-8-openjdk-amd64/include;/usr/lib/jvm/java-8-openjdk-amd64/include/linux;/usr/lib/jvm/java-8-openjdk-amd64/include
--- JNI_LIBRARIES=/usr/lib/jvm/default-java/jre/lib/amd64/libjawt.so;/usr/lib/jvm/default-java/jre/lib/amd64/server/libjvm.so
--- Found HDFS/usr/local/hadoop/include
--- Found MPI_C: /usr/lib/openmpi/lib/libmpi.so  
--- Found MPI_CXX: /usr/lib/openmpi/lib/libmpi_cxx.so;/usr/lib/openmpi/lib/libmpi.so  
--- Boost version: 1.58.0
--- Found the following Boost libraries:
---   system
---   filesystem
---   mpi
---   serialization
-/usr/bin/mpiexec
-README.mdtests/driver.cppinclude/LSH.hsrc/LSH.cpptests/unitTests/HdfsTest.cpptests/unitTests/MetaTest.cpptests/unitTests/MTTests/StdthreadTest.cpptests/unitTests/MTTests/PthreadTest.cppsrc/InMemoryStore/memcached.cpptests/unitTests/MTTests/OpenMPTest.cpptests/unitTests/inMemoryStoreTest/MemcachedTest.cppsrc/InMemoryStore/redis.cpptests/unitTests/inMemoryStoreTest/RedisTest.cppsrc/Normalizer.cpptests/unitTests/SingleThreadTest.cppinclude/otherClasses/FileLoader.hinclude/otherClasses/Computer.htests/unitTests/ComputerTest.cppinclude/otherClasses/ParameterHolder.hinclude/otherClasses/Generator.hsrc/Generator.cppsrc/Computer/PthreadComputer.cpptests/unitTests/GeneratorTest.cppsrc/Computer/SingleThreadComputer.cppsrc/Computer/OpenMPComputer.cppsrc/Computer/StdThreadComputer.cppsrc/FileLoader/LfsLoader.cppsrc/FileLoader/FileLoader.cppsrc/FileLoader/HdfsLoader.cpp
-/usr/lib/openmpi/lib/libmpi_cxx.so/usr/lib/openmpi/lib/libmpi.so
+-- Found SWIG: /usr/bin/swig3.0 (found version "3.0.8") 
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython2.7.so (found version "2.7.12") 
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/peter/FYP/FastLSH-swig/cmake-build-debug
+-- Build files have been written to: /home/peter/FYP/FastLSH-swig

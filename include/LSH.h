@@ -24,13 +24,15 @@ class LSH{
 
     LSH();
 
-    LSH(size_t N, size_t D, size_t L, size_t K, double W, size_t Q, size_t T);
+    LSH(size_t N,size_t Q, size_t D, size_t L, size_t K, double W,  size_t T);
 
    // ~LSH();
 
-    void loadSetQ(char *filePath, int fileSize);
+    void loadSetQ(const char *filePath, int fileSize);
 
-    void loadSetN(char *filePath, int fileSize);
+    void loadSetN(const char *filePath, int fileSize);
+
+    void saveCandidateSet(const char *filePath);
 
     bool setUseHdfs(bool useHdfs);
 
@@ -58,12 +60,25 @@ class LSH{
 
     bool setComputeMode(int computeMode);
 
-//    void reportStatus();
+    std::string reportStatus();
+
+    //void reportStatus();
 
     void clear();
 
 //    int reset();
 
+    const vector2D &getSetN() const;
+
+    void setSetN(const vector2D &setN);
+
+    const vector2D &getSetQ() const;
+
+    void setSetQ(const vector2D &setQ);
+
+    const vector2D &getHashMatrixN() const;
+
+    const vector2D &getHashMatrixQ() const;
 
 
 private:

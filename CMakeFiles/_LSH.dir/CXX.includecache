@@ -93,6 +93,8 @@ thread
 -
 algorithm
 -
+iostream
+-
 ../../include/otherClasses/Computer.h
 /home/peter/FYP/FastLSH-swig/include/otherClasses/Computer.h
 
@@ -123,6 +125,8 @@ thread
 -
 algorithm
 -
+iostream
+-
 ../../include/otherClasses/Computer.h
 /home/peter/FYP/FastLSH-swig/include/otherClasses/Computer.h
 
@@ -132,6 +136,8 @@ cmath
 thread
 -
 algorithm
+-
+iostream
 -
 ../../include/otherClasses/Computer.h
 /home/peter/FYP/FastLSH-swig/include/otherClasses/Computer.h
@@ -166,6 +172,8 @@ fstream
 iostream
 -
 random
+-
+iomanip
 -
 
 /home/peter/FYP/FastLSH-swig/src/Normalizer.cpp

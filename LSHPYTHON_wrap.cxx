@@ -4807,6 +4807,38 @@ namespace swig {
 	};
       }
     
+
+SWIGINTERNINLINE PyObject *
+SWIG_FromCharPtrAndSize(const char* carray, size_t size)
+{
+  if (carray) {
+    if (size > INT_MAX) {
+      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+      return pchar_descriptor ? 
+	SWIG_InternalNewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
+    } else {
+#if PY_VERSION_HEX >= 0x03000000
+#if PY_VERSION_HEX >= 0x03010000
+      return PyUnicode_DecodeUTF8(carray, static_cast< Py_ssize_t >(size), "surrogateescape");
+#else
+      return PyUnicode_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+#else
+      return PyString_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+    }
+  } else {
+    return SWIG_Py_Void();
+  }
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_std_string  (const std::string& s)
+{
+  return SWIG_FromCharPtrAndSize(s.data(), s.size());
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -5679,8 +5711,8 @@ SWIGINTERN PyObject *_wrap_new_LSH__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObj
   size_t arg2 ;
   size_t arg3 ;
   size_t arg4 ;
-  double arg5 ;
-  size_t arg6 ;
+  size_t arg5 ;
+  double arg6 ;
   size_t arg7 ;
   size_t val1 ;
   int ecode1 = 0 ;
@@ -5690,9 +5722,9 @@ SWIGINTERN PyObject *_wrap_new_LSH__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObj
   int ecode3 = 0 ;
   size_t val4 ;
   int ecode4 = 0 ;
-  double val5 ;
+  size_t val5 ;
   int ecode5 = 0 ;
-  size_t val6 ;
+  double val6 ;
   int ecode6 = 0 ;
   size_t val7 ;
   int ecode7 = 0 ;
@@ -5726,16 +5758,16 @@ SWIGINTERN PyObject *_wrap_new_LSH__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_LSH" "', argument " "4"" of type '" "size_t""'");
   } 
   arg4 = static_cast< size_t >(val4);
-  ecode5 = SWIG_AsVal_double(obj4, &val5);
+  ecode5 = SWIG_AsVal_size_t(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_LSH" "', argument " "5"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_LSH" "', argument " "5"" of type '" "size_t""'");
   } 
-  arg5 = static_cast< double >(val5);
-  ecode6 = SWIG_AsVal_size_t(obj5, &val6);
+  arg5 = static_cast< size_t >(val5);
+  ecode6 = SWIG_AsVal_double(obj5, &val6);
   if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_LSH" "', argument " "6"" of type '" "size_t""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_LSH" "', argument " "6"" of type '" "double""'");
   } 
-  arg6 = static_cast< size_t >(val6);
+  arg6 = static_cast< double >(val6);
   ecode7 = SWIG_AsVal_size_t(obj6, &val7);
   if (!SWIG_IsOK(ecode7)) {
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_LSH" "', argument " "7"" of type '" "size_t""'");
@@ -5787,12 +5819,12 @@ SWIGINTERN PyObject *_wrap_new_LSH(PyObject *self, PyObject *args) {
           }
           if (_v) {
             {
-              int res = SWIG_AsVal_double(argv[4], NULL);
+              int res = SWIG_AsVal_size_t(argv[4], NULL);
               _v = SWIG_CheckState(res);
             }
             if (_v) {
               {
-                int res = SWIG_AsVal_size_t(argv[5], NULL);
+                int res = SWIG_AsVal_double(argv[5], NULL);
                 _v = SWIG_CheckState(res);
               }
               if (_v) {
@@ -5815,7 +5847,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_LSH'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    LSH::LSH()\n"
-    "    LSH::LSH(size_t,size_t,size_t,size_t,double,size_t,size_t)\n");
+    "    LSH::LSH(size_t,size_t,size_t,size_t,size_t,double,size_t)\n");
   return 0;
 }
 
@@ -5844,7 +5876,7 @@ SWIGINTERN PyObject *_wrap_LSH_loadSetQ(PyObject *SWIGUNUSEDPARM(self), PyObject
   arg1 = reinterpret_cast< LSH * >(argp1);
   res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LSH_loadSetQ" "', argument " "2"" of type '" "char *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LSH_loadSetQ" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
   ecode3 = SWIG_AsVal_int(obj2, &val3);
@@ -5852,7 +5884,7 @@ SWIGINTERN PyObject *_wrap_LSH_loadSetQ(PyObject *SWIGUNUSEDPARM(self), PyObject
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "LSH_loadSetQ" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  (arg1)->loadSetQ(arg2,arg3);
+  (arg1)->loadSetQ((char const *)arg2,arg3);
   resultobj = SWIG_Py_Void();
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
@@ -5886,7 +5918,7 @@ SWIGINTERN PyObject *_wrap_LSH_loadSetN(PyObject *SWIGUNUSEDPARM(self), PyObject
   arg1 = reinterpret_cast< LSH * >(argp1);
   res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LSH_loadSetN" "', argument " "2"" of type '" "char *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LSH_loadSetN" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
   ecode3 = SWIG_AsVal_int(obj2, &val3);
@@ -5894,7 +5926,40 @@ SWIGINTERN PyObject *_wrap_LSH_loadSetN(PyObject *SWIGUNUSEDPARM(self), PyObject
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "LSH_loadSetN" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = static_cast< int >(val3);
-  (arg1)->loadSetN(arg2,arg3);
+  (arg1)->loadSetN((char const *)arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LSH_saveCandidateSet(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  LSH *arg1 = (LSH *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:LSH_saveCandidateSet",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_LSH, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSH_saveCandidateSet" "', argument " "1"" of type '" "LSH *""'"); 
+  }
+  arg1 = reinterpret_cast< LSH * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LSH_saveCandidateSet" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  (arg1)->saveCandidateSet((char const *)arg2);
   resultobj = SWIG_Py_Void();
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
@@ -6126,6 +6191,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_LSH_reportStatus(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  LSH *arg1 = (LSH *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LSH_reportStatus",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_LSH, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSH_reportStatus" "', argument " "1"" of type '" "LSH *""'"); 
+  }
+  arg1 = reinterpret_cast< LSH * >(argp1);
+  result = (arg1)->reportStatus();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_LSH_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   LSH *arg1 = (LSH *) 0 ;
@@ -6141,6 +6228,168 @@ SWIGINTERN PyObject *_wrap_LSH_clear(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   arg1 = reinterpret_cast< LSH * >(argp1);
   (arg1)->clear();
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LSH_getSetN(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  LSH *arg1 = (LSH *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  vector2D *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LSH_getSetN",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_LSH, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSH_getSetN" "', argument " "1"" of type '" "LSH const *""'"); 
+  }
+  arg1 = reinterpret_cast< LSH * >(argp1);
+  result = (vector2D *) &((LSH const *)arg1)->getSetN();
+  resultobj = swig::from(static_cast< std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LSH_setSetN(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  LSH *arg1 = (LSH *) 0 ;
+  vector2D *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:LSH_setSetN",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_LSH, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSH_setSetN" "', argument " "1"" of type '" "LSH *""'"); 
+  }
+  arg1 = reinterpret_cast< LSH * >(argp1);
+  {
+    std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *ptr = (std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LSH_setSetN" "', argument " "2"" of type '" "vector2D const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LSH_setSetN" "', argument " "2"" of type '" "vector2D const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->setSetN((vector2D const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LSH_getSetQ(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  LSH *arg1 = (LSH *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  vector2D *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LSH_getSetQ",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_LSH, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSH_getSetQ" "', argument " "1"" of type '" "LSH const *""'"); 
+  }
+  arg1 = reinterpret_cast< LSH * >(argp1);
+  result = (vector2D *) &((LSH const *)arg1)->getSetQ();
+  resultobj = swig::from(static_cast< std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LSH_setSetQ(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  LSH *arg1 = (LSH *) 0 ;
+  vector2D *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:LSH_setSetQ",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_LSH, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSH_setSetQ" "', argument " "1"" of type '" "LSH *""'"); 
+  }
+  arg1 = reinterpret_cast< LSH * >(argp1);
+  {
+    std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *ptr = (std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > *)0;
+    res2 = swig::asptr(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LSH_setSetQ" "', argument " "2"" of type '" "vector2D const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LSH_setSetQ" "', argument " "2"" of type '" "vector2D const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  (arg1)->setSetQ((vector2D const &)*arg2);
+  resultobj = SWIG_Py_Void();
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LSH_getHashMatrixN(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  LSH *arg1 = (LSH *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  vector2D *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LSH_getHashMatrixN",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_LSH, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSH_getHashMatrixN" "', argument " "1"" of type '" "LSH const *""'"); 
+  }
+  arg1 = reinterpret_cast< LSH * >(argp1);
+  result = (vector2D *) &((LSH const *)arg1)->getHashMatrixN();
+  resultobj = swig::from(static_cast< std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LSH_getHashMatrixQ(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  LSH *arg1 = (LSH *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  vector2D *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LSH_getHashMatrixQ",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_LSH, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LSH_getHashMatrixQ" "', argument " "1"" of type '" "LSH const *""'"); 
+  }
+  arg1 = reinterpret_cast< LSH * >(argp1);
+  result = (vector2D *) &((LSH const *)arg1)->getHashMatrixQ();
+  resultobj = swig::from(static_cast< std::vector< std::vector< double,std::allocator< double > >,std::allocator< std::vector< double,std::allocator< double > > > > >(*result));
   return resultobj;
 fail:
   return NULL;
@@ -6198,6 +6447,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_LSH", _wrap_new_LSH, METH_VARARGS, NULL},
 	 { (char *)"LSH_loadSetQ", _wrap_LSH_loadSetQ, METH_VARARGS, NULL},
 	 { (char *)"LSH_loadSetN", _wrap_LSH_loadSetN, METH_VARARGS, NULL},
+	 { (char *)"LSH_saveCandidateSet", _wrap_LSH_saveCandidateSet, METH_VARARGS, NULL},
 	 { (char *)"LSH_setUseHdfs", _wrap_LSH_setUseHdfs, METH_VARARGS, NULL},
 	 { (char *)"LSH_setThreadMode", _wrap_LSH_setThreadMode, METH_VARARGS, NULL},
 	 { (char *)"LSH_setDefault", _wrap_LSH_setDefault, METH_VARARGS, NULL},
@@ -6207,7 +6457,14 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"LSH_getCollisionMatrix", _wrap_LSH_getCollisionMatrix, METH_VARARGS, NULL},
 	 { (char *)"LSH_getCandidateSet", _wrap_LSH_getCandidateSet, METH_VARARGS, NULL},
 	 { (char *)"LSH_setComputeMode", _wrap_LSH_setComputeMode, METH_VARARGS, NULL},
+	 { (char *)"LSH_reportStatus", _wrap_LSH_reportStatus, METH_VARARGS, NULL},
 	 { (char *)"LSH_clear", _wrap_LSH_clear, METH_VARARGS, NULL},
+	 { (char *)"LSH_getSetN", _wrap_LSH_getSetN, METH_VARARGS, NULL},
+	 { (char *)"LSH_setSetN", _wrap_LSH_setSetN, METH_VARARGS, NULL},
+	 { (char *)"LSH_getSetQ", _wrap_LSH_getSetQ, METH_VARARGS, NULL},
+	 { (char *)"LSH_setSetQ", _wrap_LSH_setSetQ, METH_VARARGS, NULL},
+	 { (char *)"LSH_getHashMatrixN", _wrap_LSH_getHashMatrixN, METH_VARARGS, NULL},
+	 { (char *)"LSH_getHashMatrixQ", _wrap_LSH_getHashMatrixQ, METH_VARARGS, NULL},
 	 { (char *)"delete_LSH", _wrap_delete_LSH, METH_VARARGS, NULL},
 	 { (char *)"LSH_swigregister", LSH_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

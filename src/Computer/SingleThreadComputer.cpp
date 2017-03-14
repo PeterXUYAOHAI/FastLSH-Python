@@ -1,6 +1,7 @@
 #include <cmath>
 #include <thread>
 #include <algorithm>
+#include <iostream>
 #include "../../include/otherClasses/Computer.h"
 
 vector2D ComputerSingleThread::computeHash(vector2D dataset, size_t pNum){
@@ -36,6 +37,21 @@ vector2D ComputerSingleThread::computeHash(vector2D dataset, size_t pNum){
     }
     return hashMatrix;
 }
+
+std::string ComputerSingleThread::printThreadMode(){
+    return "SingleThread";
+    //std::cout<< "SingleThread";
+}
+std::string ComputerSingleThreadNormal::printComputeMode(){
+    return  "Normal";
+    //std::cout<< "Normal";
+}
+std::string ComputerSingleThreadQuick::printComputeMode(){
+    return  "Quick";
+    //std::cout<< "Quick";
+}
+
+
 
 vector2D ComputerSingleThreadNormal::computeCollision(vector2D hMatrixN, vector2D hMatrixQ){
     vector2D collisionMatrix;

@@ -6,7 +6,7 @@
 #include <iostream>
 #include "../../include/otherClasses/FileLoader.h"
 
-void LfsLoader::loadToSS(char* filePath) {
+void LfsLoader::loadToSS(const char* filePath) {
     std::ifstream file;
     file.open(filePath);
 
@@ -14,4 +14,9 @@ void LfsLoader::loadToSS(char* filePath) {
         ss << file.rdbuf();
         file.close();
     }
+}
+
+std::string LfsLoader::printLoadMode() {
+    return "LFS(Linux File System)";
+    //std::cout<<"LFS(Linux File System)";
 }

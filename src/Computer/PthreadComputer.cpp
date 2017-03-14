@@ -256,6 +256,21 @@ vector2D ComputerPthread::computeHash(vector2D dataset, size_t pointNum){
     return hashMatrix;
 }
 
+std::string ComputerPthread::printThreadMode(){
+    return  "Pthread";
+    //std::cout<< "Pthread";
+}
+std::string ComputerPthreadNormal::printComputeMode(){
+    return "Normal";
+    //std::cout<< "Normal";
+}
+std::string ComputerPthreadQuick::printComputeMode(){
+    return "Quick";
+    //std::cout<< "Quick";
+}
+
+
+
 
 vector2D ComputerPthreadNormal::computeCollision(vector2D hMatrixN, vector2D hMatrixQ){
     vector2D collisionMatrix;

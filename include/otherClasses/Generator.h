@@ -18,6 +18,8 @@ public:
     vector2D generateCollision(vector2D hMatrixN, vector2D hMatrixQ);
     vector2D generateCandidate(vector2D collisionMatrix);
     vector2D generateCandidate(vector2D hMatrixN, vector2D hMatrixQ);
+    std::string printComputeMode();
+    std::string printThreadMode();
 
 
 private:

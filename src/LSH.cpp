@@ -127,7 +127,7 @@ vector2D LSH::getCollisionMatrix() {
         if(hashMatrixN.size()==0||hashMatrixQ.size()==0) {
             if(setQ.size()==0 || setN.size()==0) {
                 std::cout << "You haven't load the datasets\n";
-                return NULL;
+                return collisionMatrix;
             }
             setQ =normalize(setQ);
             setN =normalize(setN);
@@ -146,7 +146,7 @@ vector2D LSH::getCandidateSet(){
         if(hashMatrixN.size()==0||hashMatrixQ.size()==0) {
             if(setQ.size()==0 || setN.size()==0) {
                 std::cout << "You haven't load the datasets\n";
-                return NULL;
+                return candidateSet;
             }
             setQ =normalize(setQ);
             setN =normalize(setN);

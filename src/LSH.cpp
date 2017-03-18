@@ -125,6 +125,10 @@ vector2D LSH::getCollisionMatrix() {
 
     if(collisionMatrix.size()==0) {
         if(hashMatrixN.size()==0||hashMatrixQ.size()==0) {
+            if(setQ.size()==0 || setN.size()==0) {
+                std::cout << "You haven't load the datasets\n";
+                return NULL;
+            }
             setQ =normalize(setQ);
             setN =normalize(setN);
             hashMatrixN = theGenerator->generateHash(setN,ph.N);
@@ -140,6 +144,10 @@ vector2D LSH::getCandidateSet(){
     if(candidateSet.size()==0){
         //if hash matrix not calculated
         if(hashMatrixN.size()==0||hashMatrixQ.size()==0) {
+            if(setQ.size()==0 || setN.size()==0) {
+                std::cout << "You haven't load the datasets\n";
+                return NULL;
+            }
             setQ =normalize(setQ);
             setN =normalize(setN);
             hashMatrixN = theGenerator->generateHash(setN,ph.N);
